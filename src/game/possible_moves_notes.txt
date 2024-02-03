@@ -1,0 +1,77 @@
+
+
+I would expect there to be two main types of games, placement and movement games
+
+Placement games are simpler, just adding pieces to the board like GO.
+Movement games would be like chess, where the turns are about moving pieces.
+
+
+------
+# ALL GAMES
+
+1) How many Rows does the board have (how many tiles is the board horizontally)?
+A: One of 1-256
+2) How many Column does the board have (how many tiles is the board vertically)?
+A: One of 1-256
+3) How many types of pieces does the game have?
+A: One of 1-256
+4) We will iterate over the starting positions of the board.
+4.x) For player 1, what is the starting position of piece type X? (piece 0 is for optional placement)
+A: (piece coordinates)
+4.1) Locations [A,B,C...] have repeated starting pieces, is this a mistake or player chosen initialization?
+A: One of [mistake, optional]
+5) Is the board symmetrical for the other person (vertical or horizontal), or different?
+A: One of [Vertical, Horizontal, Different]
+5.3) [Repeat 4.x for player 2]
+
+
+------
+# PLACEMENT GAMES
+
+### POSSIBLE MOVES
+To determine where pieces can be placed this series of questions should be asked (examples for games at the end)
+ (to be updated as needed)
+
+1) Are moves done on Empty Tiles, Existing Tiles, or Both
+A: One of [Empty,Existing,Both]
+
+1.1) Can they be placed Anywhere, Adjacent to another piece, or Not Adjacent (further restrictions will be asked)
+A: One of [Anywhere, Adjacent, Not]
+
+1.1.2) Adjacent to yourself, Adjacent to other players, Not adjacent to yourself, not adjacent to other players? Diagonal of any of the previous, any square connection?
+A: One of [Self, Other, Not Self, Not Other, Diag Self, Diag Other, Diag Self, Diag Not Other, Any Self, Any Other, Any Not Self, Any Not Other]
+
+1.1.2.x) Which additional restrictions: Move cannot repeat previous position, must form a line to one of its own color, diagonal to own, (more options TBD)
+A: Any of [Repeat, Line, Diagonal, ...]
+
+### MOVE RESULTS
+
+1) Are there changes to the board after placing a piece?
+A: One of [Yes, No]
+1.1) Is it a direct effect from the piece, or an effect based on placement location, or both?
+A: One of [Piece, Location, Both]
+1.1.2) Is it destroying pieces, swapping tile team, add pieces, or is it different per piece?
+A: Any of [Destroy, Swap, Unique]
+1.1.2.2) In a Radius, in a Line to own piece, in a Line to Enemy Piece?
+A: Any of [Radius, Own, Enemy]
+1.1.2.2.2) Allow diagonals, move through empty tiles, move through enemy pieces, move through own pieces?
+A: Any of [Diagonal, Empty, Enemy, Own]
+
+
+
+### ENDGAME CONDITIONS
+
+1) Is it when a player is eliminated, no moves are possible by one party, no moves are possible by both parties, a score cap is reached, a board state is repeated three times, or a specific condition is reached
+A: Any of [Eliminated, One, Both, Score, Repeat, Condition]
+
+1.4) How high of a score?
+A: -1000 to 1000
+
+2) Is the winner the one who can still move, has the most pieces on the board, has the least pieces on the board, the one who cannot move, highest score, or the one to reach the condition?
+A: One of Above [YesMove, NoMove, Most, Least, Highest, Condition]
+
+
+
+
+
+
